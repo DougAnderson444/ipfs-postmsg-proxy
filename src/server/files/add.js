@@ -8,7 +8,7 @@ import { isFunctionJson, functionToJson } from '../../serialization/function'
 
 export default function (getIpfs, opts) {
   return {
-    add: expose('ipfs.files.add', pre(
+    add: expose('ipfs.add', pre(
       (...args) => {
         const fileFromJsonOpts = { pms: opts }
 
@@ -19,7 +19,7 @@ export default function (getIpfs, opts) {
         return args
       },
       opts.pre('files.add'),
-      (...args) => getIpfs().files.add(...args)
+      (...args) => getIpfs().add(...args)
     ), opts),
     addPullStream: expose('ipfs.files.addPullStream', pre(
       opts.pre('files.addPullStream'),

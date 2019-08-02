@@ -14,7 +14,7 @@ export default function (opts) {
         preBufferToJson(0),
         preCidToJson(0),
         post(
-          caller('ipfs.files.cat', opts),
+          caller('ipfs.cat', opts),
           bufferFromJson
         )
       )
@@ -27,7 +27,7 @@ export default function (opts) {
         preBufferToJson(0),
         preCidToJson(0),
         post(
-          caller('ipfs.files.catPullStream', opts),
+          caller('ipfs.catPullStream', opts),
           (res) => PMS.source(res.name, Object.assign({}, opts, {
             post (res) {
               if (isBufferJson(res.data)) {

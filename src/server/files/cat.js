@@ -9,21 +9,21 @@ import { functionToJson } from '../../serialization/function'
 
 export default function (getIpfs, opts) {
   return {
-    cat: expose('ipfs.files.cat', pre(
+    cat: expose('ipfs.cat', pre(
       preBufferFromJson(0),
       preCidFromJson(0),
-      opts.pre('files.cat'),
+      opts.pre('cat'),
       post(
-        (...args) => getIpfs().files.cat(...args),
+        (...args) => getIpfs().cat(...args),
         bufferToJson
       )
     ), opts),
-    catPullStream: expose('ipfs.files.catPullStream', pre(
+    catPullStream: expose('ipfs.catPullStream', pre(
       preBufferFromJson(0),
       preCidFromJson(0),
-      opts.pre('files.catPullStream'),
+      opts.pre('catPullStream'),
       post(
-        (...args) => getIpfs().files.catPullStream(...args),
+        (...args) => getIpfs().catPullStream(...args),
         (res) => new Promise((resolve) => {
           const readFnName = shortid()
 

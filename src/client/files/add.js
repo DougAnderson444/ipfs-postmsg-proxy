@@ -33,7 +33,7 @@ export default function (opts) {
 
             return args
           },
-          caller('ipfs.files.add', opts)
+          caller('ipfs.add', opts)
         )
       )
 
