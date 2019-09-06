@@ -14,7 +14,7 @@ export default function (getIpfs, opts) {
       preCidFromJson(0),
       opts.pre('files.get'),
       post(
-        (...args) => getIpfs().files.get(...args),
+        (...args) => getIpfs().get(...args),
         (files) => files.map((file) => {
           if (file.content) {
             file.content = bufferToJson(file.content)
