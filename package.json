@@ -56,7 +56,7 @@
     "go-ipfs-dep": "^0.4.15",
     "hat": "0.0.3",
     "interface-ipfs-core": "^0.109.1",
-    "ipfs": "^0.37.1",
+    "ipfs": "^0.47.0",
     "ipfsd-ctl": "^0.44.1",
     "karma": "^4.2.0",
     "karma-browserify": "^6.1.0",
