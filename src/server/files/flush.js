@@ -6,7 +6,13 @@ export default function (getIpfs, opts) {
     flush: expose('ipfs.files.flush', pre(
       opts.pre('files.flush'),
       post(
-        (...args) => getIpfs().files.flush(...args),
+        async(...args) => {
+          
+         let res = await getIpfs().files.flush(...args)
+         console.log(`in flush, res: `, res)
+         return res
+        
+        },
         () => null
       )
     ), opts)
