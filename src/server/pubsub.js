@@ -66,10 +66,12 @@ export default function (getIpfs, opts) {
         },
         opts.pre('pubsub.subscribe'),
         (...args) => {
-          return getIpfs().pubsub.subscribe(...args).catch((err) => {
+          return getIpfs().pubsub.subscribe(...args)
+          /* Throws TypeError: Cannot read property 'catch' of undefined *
+          .catch((err) => {
               subs.splice(subs.indexOf(sub), 1)
               throw err
-            });   /* Throws TypeError: Cannot read property 'catch' of undefined */
+            });   */
         }
       )(...args)
     }, opts),
