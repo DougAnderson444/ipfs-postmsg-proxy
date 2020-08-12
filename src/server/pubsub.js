@@ -65,12 +65,20 @@ export default function (getIpfs, opts) {
           return args
         },
         opts.pre('pubsub.subscribe'),
-        (...args) => {
+        async(...args) => {
+          try {
+            return await getIpfs().pubsub.subscribe(...args)
+          } catch (err) {
+            subs.splice(subs.indexOf(sub), 1)
+              throw err
+          }
+          /* Throws TypeError: Cannot read property 'catch' of undefined
           return getIpfs().pubsub.subscribe(...args)
             .catch((err) => {
               subs.splice(subs.indexOf(sub), 1)
               throw err
             })
+          */
         }
       )(...args)
     }, opts),
