@@ -1,5 +1,6 @@
 import { expose } from 'postmsg-rpc'
 import { pre } from 'prepost'
+const last = require("it-last");
 
 export default function (getIpfs, opts) {
   return {
@@ -9,7 +10,7 @@ export default function (getIpfs, opts) {
     ), opts),
     resolve: expose('ipfs.name.resolve', pre(
       opts.pre('name.resolve'),
-      (...args) => getIpfs().name.resolve(...args)
+      (...args) => last(getIpfs().name.resolve(...args))
     ), opts)
   }
 }
